@@ -1,0 +1,36 @@
+<div class="real-time-price">
+    <form class="real-time-price__form" (ngSubmit)="getMarketData()">
+        <input
+            class="real-time-price__input"
+            type="text"
+            [(ngModel)]="symbol"
+            name="symbol"
+            (keydown)="onKeyDown($event)"
+            placeholder="Example: BTC_USD"
+            required
+        >
+        <button class="real-time-price__submit" type="submit">Submit</button>
+    </form>
+
+    <div *ngIf="showMarketData" class="real-time-price__content">
+        <h3>Market data: </h3>
+    
+        <div class="real-time-price__elements">
+            <div class="real-time-price__element">
+                <span>Symbol: </span>
+                <div>{{ cryptoSymbol }}</div>
+            </div>
+    
+            <div class="real-time-price__element">
+                <span>Price: </span>
+                <div>{{ '$' + price }}</div>
+            </div>
+    
+            <div class="real-time-price__element">
+                <span>Time: </span>
+                <div>{{ time }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" color = "#fff" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
